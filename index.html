@@ -45,7 +45,10 @@ html, body {
 </style>
 </head>
 <body align="center" oncontextmenu="return false" bgcolor="ffffff">
-<audio id="backgroundMusic" src="https://files.catbox.moe/6r1aa6.opus" loop></audio>
+<audio id="backgroundMusic" loop>
+  <source src="./mp3/saddo.opus" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>
 <div class="stars">
 <div class="twinkling">
 <div class="flex-center position-ref full-height">
@@ -64,11 +67,26 @@ html, body {
     <br/><code>GALIH © 2024</code>
     </div>
     </div></b></i>
+    
+    <!-- Tambahkan tombol play/pause -->
+    <button id="playPauseButton">Play</button>
 </body>
 <script>
-document.body.addEventListener('click', function() {
-    var backgroundMusic = document.getElementById('backgroundMusic');
-    backgroundMusic.play();
-});
+var backgroundMusic = document.getElementById('backgroundMusic');
+var playPauseButton = document.getElementById('playPauseButton');
+
+// Fungsi untuk memutar atau menghentikan musik
+function togglePlay() {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        playPauseButton.textContent = 'Pause';
+    } else {
+        backgroundMusic.pause();
+        playPauseButton.textContent = 'Play';
+    }
+}
+
+// Tambahkan event listener untuk klik pada tombol play/pause
+playPauseButton.addEventListener('click', togglePlay);
 </script>
 </html>
